@@ -45,5 +45,11 @@ exports.updateproduct = (req, res) => {
   if (!product) {
     res.status(404).json({ massege: "pruduct not found" });
   }
+  const { name, discription, price, categoryId } = req.body;
+  if (name) product.name = name;
+  if (price) product.price = price;
+  if (discription) product.discription = discription;
+  if (categoryId) product.categoryId = categoryId;
+
   res.status(202).json(product);
 };
