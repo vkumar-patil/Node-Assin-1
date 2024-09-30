@@ -1,29 +1,28 @@
-const { Products, ProductId, products } = require("../Data/Product");
-const { Categoris } = require("../Data/Category");
-const currentProductId = ProductId;
+const { products, productId } = require("../Data/Product");
+//const { Categoris } = require("../Data/Category");
+let currentProductId = productId;
 //create product
 exports.createProducts = (req, res) => {
-  const { name, price, discription, categoryId } = req.body;
-  if (!name || !price || !discription) {
+  const { name ,price,discription,categoryId} = req.body;
+  if (!name) {
     return res.status(400).json({ massege: "all details filling mandatory" });
   }
-  const category = Categoris.find((c) => c.id === categoryId);
-  console.log(Categoris);
-  console.log(categoryId);
+  //  const category = products.find((c) => c.id === categoryId);
+  //  console.log(Categoris);
+  // console.log(categoryId);
 
-  //console.log(typeof ProductId);
-  if (!category) {
-    return res.status(400).json({ masseg: "category is not found" });
-  }
+  //  if (!category) {
+  //   return res.status(400).json({ masseg: "category is not found" });
+  //  }
 
   const newproduct = {
     id: currentProductId++,
     name,
-    price,
-    discription,
+     price,
+   discription,
     categoryId,
   };
-  Products.push(newproduct);
+  products.push(newproduct);
   res.status(201).json(newproduct);
 };
 
