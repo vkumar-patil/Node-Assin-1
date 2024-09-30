@@ -5,4 +5,8 @@ router.post("/", ProductController.createProducts);
 router.get("/", ProductController.getallproduct);
 router.get("/:id", ProductController.getproductsingleid);
 router.put("/:id", ProductController.updateproduct);
+router.delete("/:id", ProductController.deleteproduct);
+router.get("/search", ProductController.serchName);
+router.get("/filter/category/:categoryId", ProductController.filtercategoryid);
+router.get("/filter/filterbyprice", ProductController.filterbyprice);
 module.exports = router;

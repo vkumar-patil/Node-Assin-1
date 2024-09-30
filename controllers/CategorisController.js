@@ -16,3 +16,11 @@ exports.CreateCategori = (req, res) => {
 exports.getallCategori = (req, res) => {
   res.status(200).send(Categoris);
 };
+
+//single category
+
+exports.getcategoryId = (req, res) => {
+  const result = Categoris.find((e) => e.id === parent(req.params.id));
+  if (!result) return res.status(400).json({ massege: "result not found" });
+  res.json(result);
+};
